@@ -1,0 +1,1 @@
+<a href="<?= site_url('open/weibo')?>">微博登陆	</a>
