@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>聚户外，共同发现户外前沿生活</title>
+    <title><?php echo $title;?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -19,6 +19,10 @@
       .sidebar-nav {
         padding: 9px 0;
       }
+	  .gray{
+		color:rgb(130, 130, 130);
+		font-size:12px;
+	  }
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -57,7 +61,8 @@
 			
             <ul class="nav">
               <li ><a href="<?php echo site_url('')?>">首页</a></li>
-              <li><a href="<?php echo site_url('news/submit')?>">+链接</a></li>
+              <li><a href="<?php echo site_url('news/fresh')?>">最新</a></li>
+              <li><a href="<?php echo site_url('news/comments')?>">评论</a></li>
               <li><a href="<?php echo site_url('c_site/contact')?>">联系我</a></li>
             </ul>
           </div><!--/.nav-collapse -->

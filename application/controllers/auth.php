@@ -126,7 +126,8 @@ class Auth extends CI_Controller
 					}*/
 					
 					// Load login page view
-					$this->load->view($this->dx_auth->login_view);
+					$data['title']="登录，聚户外";
+					$this->load->view($this->dx_auth->login_view,$data);
 				}
 			}
 		}

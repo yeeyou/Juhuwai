@@ -31,6 +31,12 @@ class M_news extends CI_Model {
 		$query=$this->db->get('news');
 		return $query;
 	}
+	function fresh(){
+		$this->db->order_by('posted','desc');
+		$query=$this->db->get('news');
+		return $query;
+	}
+	
 	function has_voted($id){
 		$weibo_id=$this->m_open->gowi()->weibo_id;
 		$this->db->where('news_id',$id);
@@ -38,7 +44,7 @@ class M_news extends CI_Model {
 		$query=$this->db->get('user_news');
 		$num=$query->num_rows();
 			
-		if ($num == 1){return true;}
+		if ($num != 1){return true;}
 		if ($num == 0){return false;}
 	}
 	
@@ -58,7 +64,7 @@ class M_news extends CI_Model {
 		$data1=array('weibo_id'=>$this->m_open->gowi()->weibo_id,
 					'news_id'=>$id,
 					'vote_at'=>date('Y-m-d H:i:s',time()));
-		//$this->vote_log($data1);
+		$this->vote_log($data1);
 	}
 	
 	function vote_log($data){
@@ -75,6 +81,20 @@ class M_news extends CI_Model {
 		return $query;
 	}
 	
+	function comments(){
+		$this->db->order_by('posted','desc');
+		$query=$this->db->get('comment');
+		return $query;
+	}
+	
+	function find_news($comment_id){
+		$this->db->where('id',$comment_id);
+		$comment=$this->db->get('comment')->row();
+		$news_id=$comment->news_id;
+		$news=$this->get_news($news_id);
+		return $news;
+		
+	}
 	//github ranking reddit
 	/**
      * calculates the score for a link (upvotes - downvotes)

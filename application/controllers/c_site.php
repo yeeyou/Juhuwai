@@ -21,7 +21,8 @@ class C_site extends CI_Controller {
 	}
 	
 	function contact(){
-		$this->load->view('header');
+		$data['title']="联系我|聚户外";
+		$this->load->view('header',$data);
 		$this->load->view('contact');
 		$this->load->view('footer');
 	}
