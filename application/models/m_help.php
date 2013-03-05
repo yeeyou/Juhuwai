@@ -1,1 +1,1 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');class M_help extends CI_Model {			function nltobr($str){		$text=strip_tags(nl2br($str),'<br>');		return $text;	}}
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');class M_help extends CI_Model {			function nltobr($str){		$text=strip_tags(nl2br($str),'<br>');		return $text;	}	function get_url_host($url){			$data = parse_url($url);		$data = $data['host'];		return $data;	}}

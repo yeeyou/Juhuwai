@@ -11,7 +11,7 @@ if ( !function_exists('curl_init') ) {
 //测试用 y易肖鸿那个app
 define( "WB_AKEY" , '3576524037' );
 define( "WB_SKEY" , '9df2acc4666b8bef0e2d36ece2760540' );
-define( "WB_CALLBACK_URL" , 'http://127.0.0.1/news/index.php/open/get_info/' );
+define( "WB_CALLBACK_URL" , 'http://127.0.0.1/juhuwai/index.php/open/get_info/' );
 
 if ( DEBUG_MODE ) {
     error_reporting(E_ALL);
