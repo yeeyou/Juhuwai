@@ -37,7 +37,9 @@ class News extends CI_Controller {
 	function show(){
 		$id=$this->uri->segment(3);
 		$news=$this->m_news->get_news($id);
+		$comments=$this->m_news->get_comments($id);
 		$data['news']=$news;
+		$data['comments']=$comments;
 		$this->load->view('header');
 		$this->load->view('news/show',$data);
 		$this->load->view('footer');
@@ -47,12 +49,12 @@ class News extends CI_Controller {
 	function up(){//+1 然后计算一次rank,记录其操作者与news的对应关系
 		if($this->dx_auth->is_logged_in()){
 		$id=$this->uri->segment(3);
-		if($this->m_news->has_voted($id)){
+		/*if($this->m_news->has_voted($id)){
 			echo "you have voted this news";
 		}
-		else{
+		else{*/
 		$this->m_news->up($id);
-		redirect('');}
+		redirect('');//}
 		}
 		else redirect('auth/login');
 		
@@ -63,6 +65,16 @@ class News extends CI_Controller {
 		$id=$this->uri->segment(3);
 		$this->m_news->delete($id);}
 		else echo "you don't have permission";
+	}
+	
+	function comment(){
+		$id=$this->uri->segment(3);
+		$data=array('news_id'=>$id,
+					'weibo_id'=>$this->m_open->gowi()->weibo_id,
+					'comment'=>$this->input->post('comment'),);
+		$this->m_news->comment($data);
+		redirect('news/show/'.$id);
+		
 	}
 	
 }

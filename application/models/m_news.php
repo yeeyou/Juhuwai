@@ -58,12 +58,23 @@ class M_news extends CI_Model {
 		$data1=array('weibo_id'=>$this->m_open->gowi()->weibo_id,
 					'news_id'=>$id,
 					'vote_at'=>date('Y-m-d H:i:s',time()));
-		$this->vote_log($data1);
+		//$this->vote_log($data1);
 	}
 	
 	function vote_log($data){
 		$this->db->insert('user_news',$data);
 	}
+	
+	function comment($data){
+		$this->db->insert('comment',$data);
+	}
+	function get_comments($news_id){
+		$this->db->where('news_id',$news_id);
+		$this->db->order_by('posted','desc');
+		$query=$this->db->get('comment');
+		return $query;
+	}
+	
 	//github ranking reddit
 	/**
      * calculates the score for a link (upvotes - downvotes)

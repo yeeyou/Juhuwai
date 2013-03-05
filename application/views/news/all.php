@@ -8,7 +8,8 @@
           <div class="row-fluid">
 		  
 		    <a id="up" class="btn btn-danger btn-small" href="<?php echo site_url('news/up/'.$news->id)?>"><i class="icon-thumbs-up"></i> <?php echo $news->ups?></a>
-            <a href="<?php echo $news->news_url?>"><?php echo $news->news_title;?></a><br/>
+            <a href="<?php echo $news->news_url?>"><?php echo $news->news_title;?></a>
+			<small>(<?php echo $this->m_help->get_url_host($news->news_url)?>)</small><br/>
 			
 			<?php echo $news->created_by;?>|提交于<?php echo $news->posted?> 
 			<a href="<?php echo site_url('news/show/').'/'.$news->id?>"><?php echo "评论";?></a>

@@ -88,7 +88,7 @@ class Open extends CI_Controller
 					//echo $uid;
 					//echo "注册";
 				
-					redirect('line');}
+					redirect('');}
 			}
 			else {
 				echo "fail";
